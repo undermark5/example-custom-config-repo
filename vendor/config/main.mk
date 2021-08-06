@@ -12,6 +12,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Seedvault
 
+# Add back 2 buttons navigation overlay
+PRODUCT_PACKAGES += \
+    NavigationBarMode2ButtonOverlay
+
 # Fix for Google Camera
 PRODUCT_COPY_FILES += \
 	vendor/custom/prebuilt/google_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/google_experience.xml
