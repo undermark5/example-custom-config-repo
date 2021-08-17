@@ -95,7 +95,9 @@ custom_hosts_file="https://raw.githubusercontent.com/StevenBlack/hosts/master/ho
 echo "applying custom hosts file ${custom_hosts_file}"
 retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hosts_file}"
 
-patch_mkbootfs
+if [ "${ADD_MAGISK}" = true ]; then
+    patch_mkbootfs
+fi
 patch_recovery
 
 if [ "${ADD_BITGAPPS}" = true ]; then
