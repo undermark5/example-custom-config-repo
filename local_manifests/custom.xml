@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="personal-remote" fetch="https://github.com/rattlesnakeos/" revision="11.0" />
+  <remote name="personal-remote" fetch="https://github.com/CaseyBakey/" revision="chaosp_11" />
   <remote name="seedvault-app" fetch="https://github.com/seedvault-app/" revision="master" />
 
   <!-- this custom repo - do not change path -->
