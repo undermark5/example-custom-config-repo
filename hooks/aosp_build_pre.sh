@@ -79,6 +79,11 @@ mimick_google_builds(){
   #sed -i "s/PRODUCT_MODEL := AOSP on ${DEVICE}/PRODUCT_MODEL := ${DEVICE_FRIENDLY}/" "${PRODUCT_MAKEFILE}"
 }
 
+patch_safetynet(){
+ cd "${AOSP_BUILD_DIR}/system/security/"
+ patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0003-keystore-Block-key-attestation-for-Google-Play-Servi.patch"
+}
+
 # apply microg sigspoof patch
 #echo "applying microg sigspoof patch"
 #patch -p1 --no-backup-if-mismatch < "platform/prebuilts/microg/00002-microg-sigspoof.patch"
@@ -113,4 +118,9 @@ fi
 if [ "${USE_CUSTOM_BOOTANIMATION}" = true ]; then
   cp "${CUSTOM_DIR}/prebuilt/bootanimation.zip" "${AOSP_BUILD_DIR}/system/media/bootanimation.zip"
   echo -ne "\\nPRODUCT_COPY_FILES += \\\\\nsystem/media/bootanimation.zip:system/media/bootanimation.zip" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
+fi
+
+# Patch Keystore to pass SafetyNet
+if [ "${SAFETYNET_BYPASS}" = true ]; then
+  patch_safetynet
 fi
