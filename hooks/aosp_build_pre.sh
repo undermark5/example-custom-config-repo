@@ -12,6 +12,18 @@ patch_recovery(){
   patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0002_recovery_add_mark_successful_option.patch"
 }
 
+patch_bitgapps(){
+  log_header "${FUNCNAME[0]}"
+
+  retry git clone https://github.com/BiTGApps/aosp-build.git "${AOSP_BUILD_DIR}/vendor/gapps"
+  cd "${AOSP_BUILD_DIR}/vendor/gapps"
+  git lfs pull
+
+  echo -ne "\\nTARGET_ARCH := arm64" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
+  echo -ne "\\nTARGET_SDK_VERSION := 30" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
+  echo -ne "\\n\$(call inherit-product, vendor/gapps/gapps.mk)" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
+}
+
 # apply microg sigspoof patch
 #echo "applying microg sigspoof patch"
 #patch -p1 --no-backup-if-mismatch < "platform/prebuilts/microg/00002-microg-sigspoof.patch"
@@ -30,3 +42,7 @@ retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hos
 
 patch_mkbootfs
 patch_recovery
+
+if [ "${ADD_BITGAPPS}" = true ]; then
+  patch_bitgapps
+fi
