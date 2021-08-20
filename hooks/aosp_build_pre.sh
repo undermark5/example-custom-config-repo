@@ -116,7 +116,7 @@ fi
 
 # Use a cool alternative bootanimation
 if [ "${USE_CUSTOM_BOOTANIMATION}" == "true" ]; then
-  cp "${CUSTOM_DIR}/prebuilt/bootanimation.zip" "${AOSP_BUILD_DIR}/system/media/bootanimation.zip"
+  cp -f "${CUSTOM_DIR}/prebuilt/bootanimation.zip" "${AOSP_BUILD_DIR}/system/media/bootanimation.zip"
   echo -ne "\\nPRODUCT_COPY_FILES += \\\\\nsystem/media/bootanimation.zip:system/media/bootanimation.zip" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
 fi
 
