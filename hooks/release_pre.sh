@@ -110,6 +110,6 @@ EOF
 
 }
 
-if [ "${ADD_MAGISK}" = true ]; then
+if [ "${ADD_MAGISK}" == "true" ]; then
     add_magisk
 fi

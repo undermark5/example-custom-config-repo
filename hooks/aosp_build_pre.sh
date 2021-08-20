@@ -100,27 +100,27 @@ custom_hosts_file="https://raw.githubusercontent.com/StevenBlack/hosts/master/ho
 echo "applying custom hosts file ${custom_hosts_file}"
 retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hosts_file}"
 
-if [ "${ADD_MAGISK}" = true ]; then
+if [ "${ADD_MAGISK}" == "true" ]; then
     patch_mkbootfs
 fi
 patch_recovery
 
-if [ "${ADD_BITGAPPS}" = true ]; then
+if [ "${ADD_BITGAPPS}" == "true" ]; then
   patch_bitgapps
 fi
 
 # Mimick Google builds
-if [ "${MIMICK_GOOGLE_BUILDS}" = true ]; then
+if [ "${MIMICK_GOOGLE_BUILDS}" == "true" ]; then
   mimick_google_builds
 fi
 
 # Use a cool alternative bootanimation
-if [ "${USE_CUSTOM_BOOTANIMATION}" = true ]; then
+if [ "${USE_CUSTOM_BOOTANIMATION}" == "true" ]; then
   cp "${CUSTOM_DIR}/prebuilt/bootanimation.zip" "${AOSP_BUILD_DIR}/system/media/bootanimation.zip"
   echo -ne "\\nPRODUCT_COPY_FILES += \\\\\nsystem/media/bootanimation.zip:system/media/bootanimation.zip" >> "${AOSP_BUILD_DIR}/device/google/${DEVICE_FAMILY}/device.mk"
 fi
 
 # Patch Keystore to pass SafetyNet
-if [ "${SAFETYNET_BYPASS}" = true ]; then
+if [ "${SAFETYNET_BYPASS}" == "true" ]; then
   patch_safetynet
 fi

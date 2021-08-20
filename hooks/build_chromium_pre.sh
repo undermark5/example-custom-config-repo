@@ -7,7 +7,7 @@
 # cd "${CHROMIUM_BUILD_DIR}/src"
 # git am --whitespace=nowarn ${vanadium_dir}/patches/*.patch
 
-if [ "${APPLY_BROMITE_PATCHES}" = true ]; then
+if [ "${APPLY_BROMITE_PATCHES}" == "true" ]; then
     echo "applying bromite patches"
     cd "${CHROMIUM_BUILD_DIR}/src"
     rm -rf .git/rebase-apply/
