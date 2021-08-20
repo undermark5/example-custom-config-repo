@@ -15,6 +15,7 @@ patch_recovery(){
 patch_bitgapps(){
   log_header "${FUNCNAME[0]}"
 
+  rm -rf "${AOSP_BUILD_DIR}/vendor/gapps"
   retry git clone https://github.com/BiTGApps/aosp-build.git "${AOSP_BUILD_DIR}/vendor/gapps"
   cd "${AOSP_BUILD_DIR}/vendor/gapps"
   git lfs pull
