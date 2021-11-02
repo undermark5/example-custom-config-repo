@@ -26,8 +26,12 @@ patch_bitgapps(){
 }
 
 patch_safetynet(){
- cd "${AOSP_BUILD_DIR}/system/security/"
- patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0003-keystore-Block-key-attestation-for-Google-Play-Servi.patch"
+ #cd "${AOSP_BUILD_DIR}/system/security/"
+ #patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0003-keystore-Block-key-attestation-for-Google-Play-Servi.patch"
+
+  cd "${AOSP_BUILD_DIR}/frameworks/base/"
+  rm -rf "${AOSP_BUILD_DIR}/frameworks/base/core/java/com/android/internal/gmscompat/"
+  patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0004-bypass-safetynet.patch"
 }
 
 # apply microg sigspoof patch
