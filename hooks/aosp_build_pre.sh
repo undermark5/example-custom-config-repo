@@ -32,6 +32,9 @@ patch_safetynet(){
   cd "${AOSP_BUILD_DIR}/frameworks/base/"
   rm -rf "${AOSP_BUILD_DIR}/frameworks/base/core/java/com/android/internal/gmscompat/"
   patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0004-bypass-safetynet.patch"
+
+  cd "${AOSP_BUILD_DIR}/system/core/"
+  patch -p1 --no-backup-if-mismatch < "${CUSTOM_DIR}/patches/0005-init-set-properties-to-make-safetynet-pass.patch"
 }
 
 # apply microg sigspoof patch
