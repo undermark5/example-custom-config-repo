@@ -1,5 +1,5 @@
---- a/cpio/mkbootfs.c
-+++ b/cpio/mkbootfs.c
+--- a/mkbootfs/mkbootfs.c
++++ b/mkbootfs/mkbootfs.c
 @@ -179,9 +179,13 @@
      }
  
