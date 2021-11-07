@@ -10,10 +10,10 @@ index bed3bc5..2a31fff 100644
          "libbase",
          "libbootloader_message",
          "libcrypto",
-@@ -64,6 +65,7 @@ cc_library_static {
-         "verifier.cpp",
+@@ -115,6 +115,7 @@
          "wipe_data.cpp",
          "wipe_device.cpp",
+         "spl_check.cpp",
 +        "mark_slot_successful.cpp",
      ],
  
