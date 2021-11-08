@@ -18,7 +18,7 @@
 -->
 <resources>
 
-    <bool name="def_backup_enabled">true</bool>
-    <string name="def_backup_transport" translatable="false">com.stevesoltys.seedvault.transport.ConfigurableBackupTransport</string>
+    <bool name="def_backup_enabled">false</bool>
+    <string name="def_backup_transport" translatable="false">com.android.localtransport/.LocalTransport</string>
 
 </resources>
