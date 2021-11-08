@@ -8,13 +8,6 @@ PRODUCT_PACKAGES += \
     FakeStore \
     com.google.android.maps.jar
 
-# Seedvault
-PRODUCT_PACKAGES += \
-    Seedvault
-
-# Add back 2 buttons navigation overlay
-PRODUCT_PACKAGES += \
-    NavigationBarMode2ButtonOverlay
 
 # Fix for Google Camera
 PRODUCT_COPY_FILES += \
